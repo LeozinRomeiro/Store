@@ -1,4 +1,5 @@
 using System;
+using Flunt.Notifications;
 using Flunt.Validations;
 
 namespace Store.Domain.Entities
@@ -8,9 +9,9 @@ namespace Store.Domain.Entities
         public OrderItem(Product product, int quantity)
         {
             AddNotifications(
-                new Contract()
+                new Contract<Notification>()
                     .Requires()
-                    .IsNotNull(product, "Product", "Produto inválido")
+                    .IsNotNull(product, "Product", "Produto invï¿½lido")
                     .IsGreaterThan(quantity, 0, "Quantity", "A quantidade deve ser maior que zero")
             );
 
