@@ -62,9 +62,11 @@ namespace Store.Tests.Entities
 
         [TestMethod]
         [TestCategory("Domain")]
-        public void DadoUmNovoItemComquantidadezeroOuMenorOMesmoNaoDeveSerAdicionado()
+        public void DadoUmNovoItemComQuantidadeZeroOuMenorOMesmoNaoDeveSerAdicionado()
         {
-           
+            var order = new Order(_customer, 0, null);
+            order.AddItem(_product, 0);
+            Assert.AreEqual(order.Items.Count, 0);
         }
 
         [TestMethod]
