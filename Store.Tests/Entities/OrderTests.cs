@@ -73,42 +73,55 @@ namespace Store.Tests.Entities
         [TestCategory("Domain")]
         public void DadoUmNovoPedidoValidoSeuTotalDeveSer50()
         {
-           
+            var order = new Order(_customer, 10, _discount);
+            order.AddItem(_product, 5);
+            Assert.AreEqual(order.Total(), 50);
         }
 
         [TestMethod]
         [TestCategory("Domain")]
         public void DadoUmDescontoExpiradoOValorDoPedidoDeveSer60()
         {
-            
+            var expireDiscount = new Discount(10, DateTime.Now.AddDays(-1));
+            var order = new Order(_customer, 10, expireDiscount);
+            order.AddItem(_product, 5);
+            Assert.AreEqual(order.Total(), 60);
         }
 
         [TestMethod]
         [TestCategory("Domain")]
         public void DadoUmDescontoInvalidoOValorDoPedidoDeveSer60()
         {
-            
+            var order = new Order(_customer, 10, null);
+            order.AddItem(_product, 5);
+            Assert.AreEqual(order.Total(), 60);
         }
 
         [TestMethod]
         [TestCategory("Domain")]
-        public void DadoUmDescontoDe10OValorDoPedidoDeveSer50()
+        public void DadoUmDescontoDe10ValorDoPedidoDeveSer50()
         {
-            
+            var order = new Order(_customer, 10, _discount);
+            order.AddItem(_product, 5);
+            Assert.AreEqual(order.Total(), 50);
         }
 
         [TestMethod]
         [TestCategory("Domain")]
-        public void DadoUmaTaxaDeEntregaDe10OValorDoPedidoDeveSer60()
+        public void DadoUmaTaxaDeEntregaDe10ValorDoPedidoDeveSer60()
         {
-            
+            var order = new Order(_customer, 10, _discount);
+            order.AddItem(_product, 6);
+            Assert.AreEqual(order.Total(), 60);
         }
 
         [TestMethod]
         [TestCategory("Domain")]
         public void DadoUmPedidoSemClienteOMesmoDeveSerInvalido()
         {
-            
+            var order = new Order(null, 10, _discount);
+            order.AddItem(_product, 6);
+            Assert.AreEqual(order.IsValid, false);
         }
 
     }
