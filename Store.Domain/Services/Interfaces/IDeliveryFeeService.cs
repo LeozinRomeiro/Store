@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Store.Domain.Repositories.Interfaces
+namespace Store.Domain.Services.Interfaces
 {
-    public interface IDeliveryFeeRepository
+    public interface IDeliveryFeeService
     {
-        decimal Get(string zipCode);
+        decimal GetByZipCode(string zipCode);
     }
 }

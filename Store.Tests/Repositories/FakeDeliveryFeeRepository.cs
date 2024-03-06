@@ -1,4 +1,4 @@
-﻿using Store.Domain.Repositories.Interfaces;
+﻿using Store.Domain.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Store.Tests.Repositories
 {
-    public class FakeDeliveryFeeRepository : IDeliveryFeeRepository
+    public class FakeDeliveryFeeRepository : IDeliveryFeeService
     {
         public decimal Get(string zipCode)
         {

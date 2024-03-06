@@ -1,6 +1,7 @@
 ﻿using Store.Domain.Commands;
 using Store.Domain.Hanlers;
 using Store.Domain.Repositories.Interfaces;
+using Store.Domain.Services.Interfaces;
 using Store.Tests.Repositories;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace Store.Tests.Hanlers
         private readonly ICustomerRepository _customerRepository;
         private readonly IOrderRepository _orderRepository;
         private readonly IDiscountRepository _discountRepository;
-        private readonly IDeliveryFeeRepository _deliveryfeeRepository;
+        private readonly IDeliveryFeeService _deliveryfeeRepository;
         private readonly IProductRepository _productRepository;
 
         public OrderHanlersTests()
