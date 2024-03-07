@@ -10,9 +10,14 @@ namespace Store.Domain.Services
 {
 	public class DeliveryFeeService : IDeliveryFeeService
 	{
-		public async Task<decimal> GetByZipCode(string zipCode)
+		private readonly Configuration _configuration;
+        public DeliveryFeeService(Configuration configuration)
+        {
+            _configuration = configuration;
+        }
+        public async Task<decimal> GetByZipCode(string zipCode)
 		{
-			var client = new RestClient("https://api.myorg.com/");
+			var client = new RestClient(_configuration.UrlDeliveryFee);
 			var request = new RestRequest().AddJsonBody(new { ZipCode = zipCode });
 			var response = await client.PostAsync<decimal>(request);
 			return response <5 ? 5 : response;	
